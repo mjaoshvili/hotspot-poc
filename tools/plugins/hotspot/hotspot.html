@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hotspot Editor</title>
+  <link rel="stylesheet" href="./hotspot.css">
+  <script src="./hotspot.js" type="module"></script>
+</head>
+<body>
+  <main class="hotspot-editor">
+    <header class="toolbar">
+      <button type="button" class="load">Load selected image</button>
+      <p class="status" role="status" aria-live="polite">Click the image inside your hotspot block, then press "Load selected image".</p>
+    </header>
+    <section class="workspace" hidden>
+      <div class="stage-wrapper">
+        <div class="stage">
+          <img class="stage-image" alt="" draggable="false">
+        </div>
+        <p class="hint">Click the image to add a hotspot. Drag a hotspot to move it.</p>
+      </div>
+      <aside class="panel">
+        <h2>Hotspots</h2>
+        <ol class="list"></ol>
+      </aside>
+    </section>
+    <footer class="actions">
+      <button type="button" class="cancel">Cancel</button>
+      <button type="button" class="clear" disabled>Remove all</button>
+      <button type="button" class="apply accent" disabled>Apply</button>
+    </footer>
+  </main>
+</body>
+</html>

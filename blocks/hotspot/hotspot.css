@@ -1,0 +1,200 @@
+.hotspot .hotspot-stage {
+  position: relative;
+}
+
+.hotspot .hotspot-stage picture,
+.hotspot .hotspot-stage img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hotspot .hotspot-marker {
+  position: absolute;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+}
+
+.hotspot .hotspot-marker.active {
+  z-index: 2;
+}
+
+.hotspot .hotspot-target {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: rgb(255 255 255 / 60%);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.hotspot .hotspot-dot {
+  display: grid;
+  place-items: center;
+  min-width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: var(--link-color);
+  color: var(--background-color);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  transition: background-color 0.2s ease;
+}
+
+.hotspot .hotspot-target:hover,
+.hotspot .hotspot-target:focus-visible,
+.hotspot .hotspot-target[aria-expanded="true"] {
+  background-color: var(--background-color);
+}
+
+.hotspot .hotspot-target:hover .hotspot-dot,
+.hotspot .hotspot-target[aria-expanded="true"] .hotspot-dot {
+  background-color: var(--link-hover-color);
+}
+
+/* tooltip */
+.hotspot .hotspot-tooltip {
+  --shift: 0px;
+
+  display: none;
+  position: absolute;
+  box-sizing: border-box;
+  width: min(288px, calc(100vw - 32px));
+  padding: 28px 20px 20px;
+  border: 1px solid #d0d0d0;
+  border-radius: 12px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: var(--body-font-size-xs);
+  text-align: left;
+  filter: drop-shadow(0 4px 6px rgb(0 0 0 / 15%));
+}
+
+.hotspot .hotspot-marker.active .hotspot-tooltip {
+  display: block;
+}
+
+.hotspot .hotspot-tooltip p {
+  margin: 0 0 8px;
+}
+
+.hotspot .hotspot-tooltip .hotspot-tooltip-title {
+  font-weight: 700;
+}
+
+.hotspot .hotspot-tooltip .button-wrapper {
+  margin: 12px 0 0;
+}
+
+.hotspot .hotspot-tooltip-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--dark-color);
+  cursor: pointer;
+}
+
+.hotspot .hotspot-tooltip-close::before,
+.hotspot .hotspot-tooltip-close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 16px;
+  height: 2px;
+  background-color: currentcolor;
+  transform: rotate(45deg);
+}
+
+.hotspot .hotspot-tooltip-close::after {
+  transform: rotate(-45deg);
+}
+
+.hotspot .hotspot-tooltip-arrow {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #d0d0d0;
+  background-color: inherit;
+}
+
+.hotspot .hotspot-tooltip.tooltip-right {
+  top: 50%;
+  left: calc(100% + 12px);
+  transform: translateY(calc(-50% + var(--shift)));
+}
+
+.hotspot .hotspot-tooltip.tooltip-left {
+  top: 50%;
+  right: calc(100% + 12px);
+  transform: translateY(calc(-50% + var(--shift)));
+}
+
+.hotspot .hotspot-tooltip.tooltip-bottom {
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(calc(-50% + var(--shift)));
+}
+
+.hotspot .hotspot-tooltip.tooltip-top {
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(calc(-50% + var(--shift)));
+}
+
+.hotspot .tooltip-right .hotspot-tooltip-arrow {
+  top: calc(50% - var(--shift));
+  left: -7px;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.hotspot .tooltip-left .hotspot-tooltip-arrow {
+  top: calc(50% - var(--shift));
+  right: -7px;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.hotspot .tooltip-bottom .hotspot-tooltip-arrow {
+  top: -7px;
+  left: calc(50% - var(--shift));
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.hotspot .tooltip-top .hotspot-tooltip-arrow {
+  bottom: -7px;
+  left: calc(50% - var(--shift));
+  border-top-color: transparent;
+  border-left-color: transparent;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+@media (width >= 900px) {
+  .hotspot .hotspot-target {
+    width: 56px;
+    height: 56px;
+  }
+
+  .hotspot .hotspot-dot {
+    min-width: 34px;
+    height: 34px;
+    font-size: 16px;
+  }
+}
