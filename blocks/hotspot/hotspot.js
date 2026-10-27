@@ -139,10 +139,10 @@ export default function decorate(block) {
   if (!img) return;
   const media = img.closest('picture') || img;
 
-  const data = img.getAttribute('title');
-  const hotspots = parseHotspots(data);
-  // the raw JSON would otherwise show up as a native browser tooltip
-  if (isHotspotData(data)) img.removeAttribute('title');
+  // delivery renders the authored title as data-title
+  const attr = ['data-title', 'title'].find((a) => isHotspotData(img.getAttribute(a)));
+  const hotspots = attr ? parseHotspots(img.getAttribute(attr)) : [];
+  if (attr) img.removeAttribute(attr);
 
   const stage = document.createElement('div');
   stage.className = 'hotspot-stage';
